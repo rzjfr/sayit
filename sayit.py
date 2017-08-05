@@ -4,21 +4,22 @@
 import os
 import requests
 from sys import argv, stdout
+from playsound import playsound
 
 #http://www.oxfordlearnersdictionaries.com/definition/english/extraordinary
 #http://www.oxfordlearnersdictionaries.com/media/english/uk_pron/c/cus/custo/customize__gb_1.mp3
 #http://dictionary.cambridge.org/media/english/uk_pron/u/uke/ukext/ukextra014.mp3
 
-#TODO: these have us and ogg versions as well
-#TODO: error handle
 #TODO: create cli
+#TODO: add option US/UK
+#TODO: add option mp3/ogg
+#TODO: add option Cambridge/Oxford/TTS/GoogleTranslate
+#TODO: add option player engine: playsound/VLC or just file path to pipe
 #TODO: add spell checker
 
-#MP3_DATABESE = os.getcwd()
 DB = os.path.expanduser('~/.sayit')
 if not os.path.isdir(DB):
     os.makedirs(DB, exist_ok=True)
-
 
 def trim(word, char=3):
     """ trim word to character number """
@@ -56,13 +57,24 @@ def get_word(word):
     word_path = "{}/oxford/uk/{}/{}/{}".format(DB, word[0], trim(word, 3),
                                                       trim(word, 5))
     file_path = "{}/{}.mp3".format(word_path, word)
-    if os.path.exists(file_path):
-        pass
-    else:
+    if not os.path.exists(file_path):
         os.makedirs(word_path, exist_ok=True)
         save_word(word, word_path)
     return file_path
 
+def play_word(word):
+    """ play the mp3 file of the word """
+    file_path = get_word(word)
+
+    if not os.path.exists(file_path):
+        print("{} is not correct!".format(word))
+        return None
+
+    print("playing {}...".format(word))
+    playsound(file_path)
+
 
 if __name__ == '__main__':
-    stdout.write((get_word(argv[1])))
+    #stdout.write((get_word(argv[1])))
+    #$ mplayer -quiet $(python3 sayit.py bill)
+    play_word(argv[1])
