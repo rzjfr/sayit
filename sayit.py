@@ -1,4 +1,4 @@
-#!/usr/bin python
+#!/usr/bin/python3
 # encoding: utf-8
 
 import os
@@ -14,7 +14,7 @@ from playsound import playsound
 #TODO: add option US/UK
 #TODO: add option mp3/ogg
 #TODO: add option Cambridge/Oxford/TTS/GoogleTranslate
-#TODO: add option player engine: playsound/VLC or just file path to pipe
+#TODO: add option player engine: playsound/VLC/espeak or just file path to pipe
 #TODO: add spell checker
 
 DB = os.path.expanduser('~/.sayit')
@@ -70,7 +70,7 @@ def play_word(word):
         print("{} is not correct!".format(word))
         return None
 
-    print("playing {}...".format(word))
+    #print("Pronouncing {}...".format(word))
     playsound(file_path)
 
 
