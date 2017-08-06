@@ -5,18 +5,23 @@ import os
 import requests
 from sys import argv, stdout
 from playsound import playsound
+from fake_useragent import UserAgent
 
 #http://www.oxfordlearnersdictionaries.com/definition/english/extraordinary
 #http://www.oxfordlearnersdictionaries.com/media/english/uk_pron/c/cus/custo/customize__gb_1.mp3
 #http://dictionary.cambridge.org/media/english/uk_pron/u/uke/ukext/ukextra014.mp3
+#https://translate.google.com/translate_tts?ie=UTF-8&q=mortally&tl=en&total=1&idx=0&textlen=8&tk=220238.328180&client=t&prev=input
+#https://translate.google.com/translate_tts?ie=UTF-8&q=mortally&tl=en&total=1&idx=0&textlen=8&tk=220238.328180&client=t&prev=input&ttsspeed=0.5
 
-#TODO: create cli
+#TODO: create cli, argument, help
 #TODO: add option US/UK
 #TODO: add option mp3/ogg
 #TODO: add option Cambridge/Oxford/TTS/GoogleTranslate
 #TODO: add option player engine: playsound/VLC/espeak or just file path to pipe
-#TODO: add spell checker
+#TODO: add spell checker, correction, cleaner
+#TODO: create .conf file
 
+UA = UserAgent().random
 DB = os.path.expanduser('~/.sayit')
 if not os.path.isdir(DB):
     os.makedirs(DB, exist_ok=True)
@@ -40,12 +45,12 @@ def create_uri(word):
 def save_word(word, path='/tmp'):
     """ download and save the binary file to the given path """
     uri = create_uri(word)
-    ## TODO: use useragent-faker
-    headers = { 'User-Agent': 'Mozilla/5.0 (Windows NT 6.0; WOW64; rv:24.0) Gecko/20100101 Firefox/24.0' }
+
+    headers = { 'User-Agent': UA }
     request = requests.get(uri, headers=headers)
 
     if request.status_code != 200:
-        return "error"
+        raise Exception('Server does not know that!')
 
     with open('{}/{}.mp3'.format(path, word), 'wb') as f:
         for chunk in request:
