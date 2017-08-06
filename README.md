@@ -1,6 +1,10 @@
 # Python Pronounciation
 Pronouncing given word using Oxford Advanced Learner's Dictionary website.  
 
+``` bash
+pip install -r requirements.txt
+```
+
 run from command line:
 ``` bash
 python3 sayit.py good

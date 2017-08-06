@@ -3,6 +3,7 @@
 
 import os
 import requests
+import argparse
 from sys import argv, stdout
 from playsound import playsound
 from fake_useragent import UserAgent
@@ -75,11 +76,12 @@ def play_word(word):
         print("{} is not correct!".format(word))
         return None
 
-    #print("Pronouncing {}...".format(word))
     playsound(file_path)
 
 
 if __name__ == '__main__':
-    #stdout.write((get_word(argv[1])))
+    parser = argparse.ArgumentParser(description='Pronounce the given word')
+    parser.add_argument('word', help='word to be pronounced', type=str)
     #$ mplayer -quiet $(python3 sayit.py bill)
-    play_word(argv[1])
+    args = parser.parse_args()
+    play_word(args.word)
