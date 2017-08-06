@@ -4,12 +4,12 @@ Pronouncing given word using Oxford Advanced Learner's Dictionary website.
 ``` bash
 # Ubuntu
 sudo apt install libgirepository1.0-dev
-pip install -r requirements.txt
+pip install -e .
 ```
 
 run from command line:
 ``` bash
-python3 sayit.py good
+sayit hello
 ```
 or just copy as `sayit` somewhere in your path and use it with goldendict:
 - Edit -> Dictionaries -> Programs.

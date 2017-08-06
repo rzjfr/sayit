@@ -1,11 +1,10 @@
-#!/usr/bin/python3
-# encoding: utf-8
-
 import os
 import requests
 import argparse
 from playsound import playsound
 from fake_useragent import UserAgent
+
+__all__ = ['main']
 
 UA = UserAgent().random
 DB = os.path.expanduser('~/.sayit')
@@ -67,7 +66,7 @@ def play_word(word):
     playsound(file_path)
 
 
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser(description='Pronounce the given word')
     parser.add_argument('word', help='word to be pronounced', type=str)
     args = parser.parse_args()
