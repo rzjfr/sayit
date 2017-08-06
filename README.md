@@ -1,7 +1,9 @@
-# Python Pronounciation
+# Sayit
 Pronouncing given word using Oxford Advanced Learner's Dictionary website.  
 
 ``` bash
+# Ubuntu
+sudo apt install libgirepository1.0-dev
 pip install -r requirements.txt
 ```
 
