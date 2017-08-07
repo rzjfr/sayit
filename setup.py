@@ -25,6 +25,7 @@ setuptools.setup(
         'requests==2.26.0',
         'playsound==1.3.0',
         'PyGObject==3.42.0',
+        'bs4==0.0.1',
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),

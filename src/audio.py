@@ -48,5 +48,4 @@ class Audio:
         base = "http://www.oxfordlearnersdictionaries.com/media/english/uk_pron/"
         word_part = "{}/{}/{}/{}".format(word[0], word[0: 3], word[0: 5], word)
         end = "_1.mp3"  # this might end with _2 or _\d for other variations
-        print(base + word_part + end)
         return base + word_part + end
