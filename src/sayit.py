@@ -1,6 +1,7 @@
 import enchant
 import argparse
 from sys import exit
+from stats import Stats
 from audio import Audio
 from dictionary import Dictionary
 
@@ -23,6 +24,7 @@ def main():
     spell_suggestion(args.word)   # Stop the app if spell is incorrect
     Audio(args.word).play()       # Play the audio
     Dictionary(args.word).show()  # Show the definition
+    Stats(args.word).add()        # Add the stats and show
 
 
 if __name__ == '__main__':
