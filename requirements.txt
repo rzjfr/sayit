@@ -6,3 +6,4 @@ PyGObject==3.42.0
 pytest==6.2.5
 flake8==3.9.2
 bs4==0.0.1
+pyenchant==3.2.2

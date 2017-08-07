@@ -26,12 +26,13 @@ setuptools.setup(
         'playsound==1.3.0',
         'PyGObject==3.42.0',
         'bs4==0.0.1',
+        'pyenchant==3.2.2',
     ],
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.6",
     entry_points={
-        'console_scripts': ['sayit=app:main']
+        'console_scripts': ['sayit=sayit:main']
     },
     setup_requires=['flake8', 'pytest-runner'],
     tests_require=['pytest'],
